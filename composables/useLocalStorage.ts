@@ -1,5 +1,3 @@
-// useLocalStorage.js
-
 import { ref } from "vue";
 
 export const useLocalStorage = (key: string) => {
@@ -22,6 +20,8 @@ export const useLocalStorage = (key: string) => {
         data.value = data.value.filter((val) => (val !== rmData))
         localStorage.setItem(key, JSON.stringify(data.value))
     }
-    
+ 
+  onMounted(() => (getData()));
+      
     return { data, getData, addData, rmData };
 }

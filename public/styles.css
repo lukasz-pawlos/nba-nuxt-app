@@ -8,3 +8,144 @@ body {
     background-attachment: fixed;
     background-position: 0 70px; 
 }
+
+a {
+  text-decoration: none;
+}
+
+.logo {
+  background-image: url(https://graphics.axios.com/illustrations/2020-06-19-nba-template/nba-logos.png);
+  background-repeat: no-repeat;
+  display: block;
+  -webkit-transform: scale(.18);
+  transform: scale(0.5);
+  height: 300px;
+  width: 300px;
+  filter: drop-shadow(0.55rem 0.55rem 0.9rem rgba(0, 0, 0, 0.5));
+  transition: transform 0.5s
+}
+
+.logo:hover{
+  filter: drop-shadow(1rem 1rem 0.9rem rgba(0, 0, 0, 0.5));
+  transform: scale(0.7);
+}
+/* NBA LOGOS */
+.PHI {
+  background-position: -5px -5px
+}
+
+.MIL {
+  background-position: -315px -5px
+}
+
+.CHI {
+  background-position: -625px -5px
+}
+
+.CLE {
+  background-position: -935px -5px
+}
+
+.BOS {
+  background-position: -1245px -5px
+}
+
+.LAC {
+  background-position: -5px -315px
+}
+
+.MEM {
+  background-position: -315px -315px
+}
+
+.ATL {
+  background-position: -625px -315px
+}
+
+.MIA {
+  background-position: -935px -315px
+}
+
+.CHA {
+  background-position: -1245px -315px
+}
+
+.UTA {
+  background-position: -5px -625px
+}
+
+.SAC {
+  background-position: -315px -625px
+}
+
+.NYK {
+  background-position: -625px -625px
+}
+
+.LAL {
+  background-position: -935px -625px
+}
+
+.ORL {
+  background-position: -1245px -625px
+}
+
+.DAL {
+  background-position: -5px -935px
+}
+
+.BKN {
+  background-position: -315px -935px
+}
+
+.DEN {
+  background-position: -625px -935px
+}
+
+.IND {
+  background-position: -935px -935px
+}
+
+.NOP {
+  background-position: -1245px -935px
+}
+
+.DET {
+  background-position: -5px -1245px
+}
+
+.TOR {
+  background-position: -315px -1245px
+}
+
+.HOU {
+  background-position: -625px -1245px
+}
+
+.SAS {
+  background-position: -935px -1245px
+}
+
+.PHX {
+  background-position: -1245px -1245px
+}
+
+.OKC {
+  background-position: -1555px -5px
+}
+
+.MIN {
+  background-position: -1555px -315px
+}
+
+.POR {
+  background-position: -1555px -625px
+}
+
+.GSW {
+  background-position: -1555px -935px
+}
+
+.WAS {
+  background-position: -1555px -1245px
+}

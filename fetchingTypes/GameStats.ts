@@ -2,7 +2,7 @@ import { Game } from "@fetchingTypes/Game";
 import { Player } from "@fetchingTypes/Player";
 import { Team } from "@fetchingTypes/Team";
 
-export interface PlayerGameStats {
+export interface GameStats {
     id: number;
     ast: number;
     blk: number;
