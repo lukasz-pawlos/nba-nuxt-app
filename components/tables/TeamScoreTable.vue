@@ -15,11 +15,11 @@
             <td>
               <nuxt-link :to="'/team/' + game.home_team.id">
                 <span v-if="pageTeamWin(game.home_team_id, game.home_team_score, game.visitor_team_score)" 
-                  :class="{ 'text-success': pageTeamWin(game.home_team_id, game.home_team_score, game.visitor_team_score)}">
+                  class="text-success">
                   {{ game.home_team.full_name }}
                 </span>
-                <span v-if="!pageTeamWin(game.home_team_id, game.home_team_score, game.visitor_team_score)" 
-                  :class="{ 'text-danger': !pageTeamWin(game.home_team_id, game.home_team_score, game.visitor_team_score)}">
+                <span v-else 
+                  class="text-danger">
                   {{ game.home_team.full_name }}
                 </span> 
               </nuxt-link>
@@ -52,17 +52,15 @@ import { FetchingData } from "@fetchingTypes/FetchingData";
 import { Game } from "@fetchingTypes/Game";
 
 interface TeamScoreTableProps {
-  season?: number;
+  season?: any;
   teamId: number
 }
 
 const props = defineProps<TeamScoreTableProps>()
 
-const season = computed(() => localStorage.getItem("selectedYear"))
-
 const { data: gamesData } = await useFetch<FetchingData<Game[]>>(`https://www.balldontlie.io/api/v1/games`, { query: {
   ["team_ids[]"]: props.teamId,
-  ["seasons[]"]: season.value,
+  ["seasons[]"]: props.season,
 } });
 
 const pageData = ref();
@@ -80,19 +78,19 @@ const getMoreData = () => {
     if (bottomOfWindow && total_pages.value !== current_page.value) {
       const { data: gamesDatas } = await useFetch<FetchingData<Game[]>>(`https://www.balldontlie.io/api/v1/games`, { query: {
       ["team_ids[]"]: props.teamId,
-      ["seasons[]"]: season.value,
+      ["seasons[]"]: props.season,
       page: current_page.value + 1
       } });
 
       const newData = pageData.value;
-      pageData.value = newData.concat(gamesDatas.value?.data);
+      pageData.value = newData.concat(gamesDatas.value?.data).sort((a, b) => new Date(a.date) - new Date(b.date));
       total_pages.value = gamesDatas.value?.meta?.total_pages;
       current_page.value = gamesDatas.value?.meta?.current_page;
     };
   }
 }
 onBeforeMount(() => {
-  pageData.value = gamesData.value?.data;
+  pageData.value = gamesData.value?.data.sort((a, b) => new Date(a.date) - new Date(b.date));
   total_pages.value = gamesData.value?.meta?.total_pages;
   current_page.value = gamesData.value?.meta?.current_page;
 })

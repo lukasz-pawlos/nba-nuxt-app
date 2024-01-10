@@ -21,6 +21,8 @@ const years = Array.from({ length: endYear - startYear + 1 }, (_, index) => star
 
 const selectedYear = ref<any>(2023);
 
+const { data: season, setData: setSeason } = useLocalStorage("selectedYear");
+
 onMounted(() => {
   let dataStorage;
   if(!localStorage.getItem("selectedYear")) {
@@ -35,8 +37,7 @@ onMounted(() => {
  })
 
 const setYearStorage = (year: number) => {
-  localStorage.setItem("selectedYear", `${year}`);
-  window.location.reload();
+  setSeason(year)
 }
 </script>
 

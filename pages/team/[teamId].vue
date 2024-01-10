@@ -6,7 +6,7 @@
       <StarButton @click="favClick" :active="isFav"></StarButton>
     </div>
     
-    <TeamScoreTable :teamId="teamId" :season="2023"/>
+    <TeamScoreTable :teamId="teamId" :season="season" :key="season"/>
   </div>
 </template>
 
@@ -16,6 +16,8 @@ import TeamScoreTable from "@components/tables/TeamScoreTable.vue";
 import StarButton from "@components/buttons/starButton/StarButton.vue";
 
 const { data: favTeamData, getData: getFavTeam, addData: addFavTeam, rmData: rmFavTeam } = useLocalStorage("favTeams");
+const { data: season } = useLocalStorage("selectedYear");
+
 const route = useRoute();
 const teamId = route.params.teamId;
 
